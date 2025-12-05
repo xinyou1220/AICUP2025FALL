@@ -32,8 +32,8 @@
 ## 目錄
 
 - [1. 預處理 (Preprocess)](#1-預處理-preprocess)
-  - [1.1 TotalSegmentator 分割](#12-totalsegmentator-分割)
-  - [1.2 ROI 裁剪](#11-roi-裁剪)
+  - [1.1 TotalSegmentator 分割](#11-totalsegmentator-分割)
+  - [1.2 ROI 裁剪](#12-roi-裁剪)
 - [2. 距離圖生成 (Distance Map)](#2-距離圖生成-distance-map)
   - [2.1 標準距離圖生成](#21-標準距離圖生成)
   - [2.2 零內部距離圖生成](#22-零內部距離圖生成)
