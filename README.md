@@ -13,8 +13,8 @@
 原始數據
     ↓
 [1. 預處理 (Preprocess)]
-    ├── ROI 裁剪 (roi.py)
-    └── TotalSegmentator 分割 (totalseg.py)
+    ├── TotalSegmentator 分割 (totalseg.py)
+    └── ROI 裁剪 (roi.py)
     ↓
 [2. 距離圖生成 (Distance Map)]
     ├── 標準版本 (process_2class.py)
@@ -32,8 +32,8 @@
 ## 目錄
 
 - [1. 預處理 (Preprocess)](#1-預處理-preprocess)
-  - [1.1 ROI 裁剪](#11-roi-裁剪)
-  - [1.2 TotalSegmentator 分割](#12-totalsegmentator-分割)
+  - [1.1 TotalSegmentator 分割](#12-totalsegmentator-分割)
+  - [1.2 ROI 裁剪](#11-roi-裁剪)
 - [2. 距離圖生成 (Distance Map)](#2-距離圖生成-distance-map)
   - [2.1 標準距離圖生成](#21-標準距離圖生成)
   - [2.2 零內部距離圖生成](#22-零內部距離圖生成)
@@ -53,7 +53,67 @@
 
 預處理階段用於準備訓練數據，包括 ROI（感興趣區域）裁剪和使用 TotalSegmentator 進行自動分割。
 
-### 1.1 ROI 裁剪
+### 1.1 TotalSegmentator 分割
+
+`preprocess/totalseg.py` 使用 TotalSegmentator 進行自動分割，提取特定 ROI（如心臟）。
+
+#### 功能說明
+
+- 使用 TotalSegmentator 進行全身分割
+- 提取特定 ROI（如 heart）
+- 生成分割遮罩
+
+#### 使用方法
+
+1. **安裝 TotalSegmentator**：
+
+```bash
+pip install TotalSegmentator
+```
+
+2. **修改路徑配置**：
+
+```python
+inp = r"C:\Users\coffee\test.nii.gz"  # 輸入圖像路徑
+out = r"C:\Users\coffee\testmask.nii.gz"  # 輸出遮罩路徑
+```
+
+3. **設定參數**：
+
+```python
+totalsegmentator(
+    input=inp,
+    output=out,
+    task="total",          # 全身任務
+    roi_subset=["heart"],  # 只取 heart（可修改為其他 ROI）
+    fast=False,            # 高品質模式（False）或快速模式（True）
+    preview=False          # 是否生成預覽圖
+)
+```
+
+4. **執行腳本**：
+
+```bash
+python preprocess/totalseg.py
+```
+
+#### 可用的 ROI 選項
+
+TotalSegmentator 支援多種 ROI，常見選項包括：
+- `["heart"]`: 心臟
+- `["lung"]`: 肺部
+- `["liver"]`: 肝臟
+- `["kidney"]`: 腎臟
+- 更多選項請參考 [TotalSegmentator 文檔](https://github.com/wasserth/TotalSegmentator)
+
+#### 注意事項
+
+- TotalSegmentator 需要較長的處理時間，建議使用 GPU 加速
+- `fast=True` 模式速度較快但精度較低
+- 確保輸入圖像格式為 NIfTI（.nii.gz）
+
+---
+### 1.2 ROI 裁剪
 
 `preprocess/roi.py` 用於根據擴張後的標籤（dilate label）對原始圖像和標籤進行 ROI 裁剪。
 
@@ -103,66 +163,6 @@ python preprocess/roi.py
 
 ---
 
-### 1.2 TotalSegmentator 分割
-
-`preprocess/totalseg.py` 使用 TotalSegmentator 進行自動分割，提取特定 ROI（如心臟）。
-
-#### 功能說明
-
-- 使用 TotalSegmentator 進行全身分割
-- 提取特定 ROI（如 heart）
-- 生成分割遮罩
-
-#### 使用方法
-
-1. **安裝 TotalSegmentator**：
-
-```bash
-pip install TotalSegmentator
-```
-
-2. **修改路徑配置**：
-
-```python
-inp = r"C:\Users\coffee\OneDrive - 國立宜蘭大學\文件\test.nii.gz"  # 輸入圖像路徑
-out = r"C:\Users\coffee\OneDrive - 國立宜蘭大學\桌面\testmask.nii.gz"  # 輸出遮罩路徑
-```
-
-3. **設定參數**：
-
-```python
-totalsegmentator(
-    input=inp,
-    output=out,
-    task="total",          # 全身任務
-    roi_subset=["heart"],  # 只取 heart（可修改為其他 ROI）
-    fast=False,            # 高品質模式（False）或快速模式（True）
-    preview=False          # 是否生成預覽圖
-)
-```
-
-4. **執行腳本**：
-
-```bash
-python preprocess/totalseg.py
-```
-
-#### 可用的 ROI 選項
-
-TotalSegmentator 支援多種 ROI，常見選項包括：
-- `["heart"]`: 心臟
-- `["lung"]`: 肺部
-- `["liver"]`: 肝臟
-- `["kidney"]`: 腎臟
-- 更多選項請參考 [TotalSegmentator 文檔](https://github.com/wasserth/TotalSegmentator)
-
-#### 注意事項
-
-- TotalSegmentator 需要較長的處理時間，建議使用 GPU 加速
-- `fast=True` 模式速度較快但精度較低
-- 確保輸入圖像格式為 NIfTI（.nii.gz）
-
----
 
 ## 2. 距離圖生成 (Distance Map)
 

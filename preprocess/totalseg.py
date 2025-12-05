@@ -2,8 +2,8 @@ from totalsegmentator.python_api import totalsegmentator
 import multiprocessing as mp
 
 def run_seg():
-    inp = r"C:\Users\coffee\OneDrive - 國立宜蘭大學\文件\test.nii.gz"
-    out = r"C:\Users\coffee\OneDrive - 國立宜蘭大學\桌面\testmask.nii.gz"
+    inp = r"C:\Users\coffee\test.nii.gz"
+    out = r"C:\Users\coffee\testmask.nii.gz"
     totalsegmentator(
         input=inp,
         output=out,
