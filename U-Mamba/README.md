@@ -12,7 +12,7 @@
 - **ViT-based Methods**: 基於 Vision Transformer 的方法
 - **Distance-based Methods**: 基於距離的方法
 
-> 📖 **詳細的 Trainer 使用指南**: 請參閱 [TRAINER_README.md](TRAINER_README.md) 以了解 Trainer 架構、如何創建自定義 Trainer 以及訓練流程的詳細說明。
+> 📖 **詳細的 Trainer 使用指南**: 請參閱 [README.md](README.md) 以了解 Trainer 架構、如何創建自定義 Trainer 以及訓練流程的詳細說明。
 
 ## Installation 
 
@@ -79,7 +79,7 @@ nnUNetv2_train DATASET_ID 3d_fullres all -tr nnUNetTrainerUMambaEnc
 
 #### 其他方法
 
-更多訓練範例請參閱 [TRAINER_README.md](TRAINER_README.md) 中的「使用範例」章節。
+更多訓練範例請參閱 [README.md](README.md) 中的「使用範例」章節。
 
 
 ## Inference
