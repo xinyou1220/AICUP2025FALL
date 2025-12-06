@@ -1105,6 +1105,7 @@ pip install nibabel numpy cc3d
 
 - [nnU-Net 官方文檔](https://github.com/MIC-DKFZ/nnUNet)
 - [Mamba 官方倉庫](https://github.com/state-spaces/mamba)
+- [MedSAM 官方倉庫](https://github.com/bowang-lab/MedSAM)
 - [U-Mamba 論文](https://arxiv.org/abs/2401.04722)
 - [Segment Anything Model (SAM)](https://github.com/facebookresearch/segment-anything)
 - [TotalSegmentator](https://github.com/wasserth/TotalSegmentator)
