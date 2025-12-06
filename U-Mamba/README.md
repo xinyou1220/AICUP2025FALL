@@ -4,12 +4,10 @@
 
 ## 包含的方法
 
-本專案實現了多種方法，包括但不限於：
+本專案實現和使用了多種方法，包括但不限於：
 
 - **[U-Mamba](https://wanglab.ai/u-mamba.html)**: 使用 Mamba 模塊增強長距離依賴建模的生物醫學圖像分割方法
 - **SAM-based Methods**: 基於 Segment Anything Model 的方法
-- **VAE-based Methods**: 基於變分自編碼器的方法  
-- **ViT-based Methods**: 基於 Vision Transformer 的方法
 - **Distance-based Methods**: 基於距離的方法
 
 > 📖 **詳細的 Trainer 使用指南**: 請參閱 [README.md](README.md) 以了解 Trainer 架構、如何創建自定義 Trainer 以及訓練流程的詳細說明。

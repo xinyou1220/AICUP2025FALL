@@ -4,7 +4,6 @@
 
 - **U-Mamba**: 使用 Mamba 模塊增強長距離依賴建模
 - **SAM-based Methods**: 基於 Segment Anything Model 的方法
-- **ViT-based Methods**: 基於 Vision Transformer 的方法
 - **Distance-based Methods**: 基於距離的方法
 
 ## 完整工作流程
@@ -40,7 +39,7 @@
 - [3. 模型訓練 (Training)](#3-模型訓練-training)
   - [Trainer 架構概述](#trainer-架構概述)
   - [核心 Trainer 類別](#核心-trainer-類別)
-  - [Trainer 生命週期](#trainer-生命週期)
+  - [Trainer 週期](#trainer-週期)
   - [創建自定義 Trainer](#創建自定義-trainer)
   - [可用的 Trainer 變體](#可用的-trainer-變體)
   - [訓練流程詳解](#訓練流程詳解)
@@ -513,7 +512,7 @@ def run_training(self):
 
 ---
 
-## Trainer 生命週期
+## Trainer 週期
 
 ### 訓練流程圖
 
@@ -767,8 +766,6 @@ class nnUNetTrainerUMambaBot(nnUNetTrainerNoDeepSupervision):
 - **`nnUNetTrainerNNSAMdis`**: SAM + Distance-based 的 Trainer
 - **`nnUNetTrainerNNSAMshape`**: SAM + Shape Prior 的 Trainer
 - **`nnUNetTrainerNNdis`**: Distance-based 的 Trainer
-- **`nnUNetTrainerViTConcat`**: ViT Concat 的 Trainer
-
 ---
 
 ## 訓練流程詳解
@@ -1115,16 +1112,6 @@ pip install nibabel numpy cc3d
 
 ---
 
-## 貢獻指南
-
-如果您想為 AICUP2025FALL 專案添加新的 Trainer：
-
-1. 在 `umamba/nnunetv2/training/nnUNetTrainer/` 目錄下創建新的 Trainer 文件
-2. 繼承自 `nnUNetTrainer` 或相關的變體類別
-3. 實現必要的抽象方法（特別是 `build_network_architecture()`）
-4. 添加適當的文檔字符串
-5. 測試您的 Trainer 是否正常工作
-6. 更新本文檔，添加新 Trainer 的說明
 
 ### 命名規範
 
